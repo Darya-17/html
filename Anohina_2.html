@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>...</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script>
+        var otgadki = 0
+        alert("загадка1. Не лает, не кусается, и точно так же называется.")
+        var finish1 = '@'
+        var answ1 = prompt("Введите ответ: ")
+        if (answ1 == finish1) {
+            alert("Верно :)")
+            otgadki += 1
+        }
+        else {
+            alert("Неверно :(")
+        }
+        alert("Загадка 2. Самый популярный способ транспортировки людей на Земле.")
+        var finish2 = 'Пеший'
+        var answ2 = prompt("Введите ответ: ")
+        if (answ2 == finish2) {
+            alert("Верно :)")
+            otgadki += 1
+        }
+        else {
+            alert("Неверно :(")
+        }
+        alert("Количество отгадок: " + otgadki)
+
+
+        var m = 0
+        while (m != 10) {
+            m += 1
+            alert(m)
+        }
+
+        var n = parseInt(prompt('Еще по одной? Введите "1" для выхода'))
+        while (n != 1) {
+     
+            n = prompt('Еще по одной? Введите "1" для выхода')
+        };
+
+
+        var n = parseInt(prompt("Ведите число для факториала: "))
+        fact = 1
+        while (n > 1) {
+            fact *= n
+            n -= 1
+        }
+        alert("Факториал = " + fact)
+
+        var name = prompt("Введите фамилию для проверки на палиндром")
+        function Palindrom(str) {
+            return str == str.split('').reverse().join('');
+        }
+        alert("Является ли Ваша фамилия палиндром? " + Palindrom(name))
+
+        var prost = parseInt(prompt("Ведите конечное число для поиска простых чисел: "))
+        for (var i = 1; i <= prost; i++) {
+            var count = 0
+            for (var j = 1; j <= i; j++) {
+                if (i % j == 0) { count++ }
+            }
+            if (count <= 2) { alert(i) }
+        }
+
+        alert("Конец ^^")
+    </script>
+</body>
+</html>
