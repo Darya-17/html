@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>...</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+
+    <br>
+	<input type="button" id="button1" value="Палиндром">
+	<br>
+	<br>
+    <input type="button" id="button2" value="Без отрицательных">
+    <p id="newarr"></p>
+    <p id="user_name"></p>
+    <p id="user_hi"></p>
+    <p id="reverseName"></p>
+
+    
+    <script>
+     
+        function showMessage() {
+            let message = "Привет, я JavaScript!"; // локальная переменная
+            alert(message);
+            }
+
+        showMessage(); // Привет, я JavaScript!
+        
+        var name = prompt("Введите фамилию для проверки на палиндром")
+        function Palindrom(str) {
+            return str == str.split('').reverse().join('');
+        }
+
+        let button1 = document.querySelector('#button1');
+        button1.addEventListener('click', function prov_polindrom() {
+            var pol = prompt("Является ли слово палиндром? ");
+            alert(Palindrom(str))});
+
+        
+       
+        function without_minus(n){
+            var arr = [];
+            for(i=0; i<n; i++) {
+                arr[i] = Math.round(Math.random() * (30 - (-10)) + (-10));
+                if (arr[i]<0){
+                    arr[i] = arr[i]*arr[i];
+                    }
+            }
+            return arr
+        }
+        
+        let button2 = document.querySelector('#button2');
+        button2.addEventListener('click', function num_2() {
+
+
+                var newarr = document.getElementById('newarr');
+                newarr.innerHTML="<h3>Новый массив "+without_minus(15)+"<h3>";
+            
+            }
+        );
+
+        
+        class User{
+            constructor(name){
+                this.name = name;
+            }
+
+            sayName(){
+                var user_name = document.getElementById('user_name');
+                user_name.innerHTML="Меня зовут "+this.name;
+           
+            }
+            sayHi(){
+                var user_hi = document.getElementById('user_hi');
+                user_hi.innerHTML="Привет, "+this.name;
+
+            }
+        }
+        
+        let user1 = new User("Петя");
+        user1.sayName();
+
+        let user2 = new User(" Вася");
+        user2.sayHi();
+        
+      
+        class NameReverser {
+            reverseName(name) {
+                return name.split('').reverse().join('');
+            }
+        }
+
+        let reverse = new NameReverser();
+        let reverseName = reverse.reverseName('ДАРЬЯ');
+        
+        var reversemyName = document.getElementById('reverseName');
+        reversemyName.innerHTML="Мое перевернутое имя: "+reverseName;
+
+    </script>
+</body>
+</html>
