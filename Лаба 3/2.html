@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Task 2</title>
+  </head>
+  <body>
+    <script>
+      let n = 12;
+      let arr = [];
+      for (let i = 0; i < n; i++) {
+        arr.push(Math.floor(Math.random() * (10 - (-10) + 1)) + (-10)); // генерируем случайное число от -10 до 10
+      }
+
+      let new_arr = arr.map(num => num < 0 ? num ** 2 : num);
+
+      document.write(`Old array: ${arr}<br>`);
+      document.write(`New array: ${new_arr}`);
+    </script>
+  </body>
+</html>

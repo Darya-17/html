@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Task 3</title>
+  </head>
+  <body>
+    <script>
+      let arr = [];
+      for (let i = 0; i < 15; i++) {
+        arr.push(Math.floor(Math.random() * (10 - (-10) + 1)) + (-10)); // генерируем случайное число от -10 до 10
+      }
+
+      let positive_numbers = arr.filter(num => num > 0);
+      let negative_numbers = arr.filter(num => num < 0);
+      let zeros = arr.filter(num => num === 0).length;
+      let average_positive = positive_numbers.reduce((acc, cur) => acc + cur, 0) / positive_numbers.length;
+      let average_negative = negative_numbers.reduce((acc, cur) => acc + cur, 0) / negative_numbers.length;
+
+      document.write(`Array: ${arr}<br>`);
+      document.write(`Average of positive numbers: ${average_positive}<br>`);
+      document.write(`Average of negative numbers: ${average_negative}<br>`);
+      document.write(`Number of zeros: ${zeros}`);
+    </script>
+  </body>
+</html>
