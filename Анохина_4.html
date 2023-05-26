@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>...</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h2>2. Информация о покупателе: </h2>
+    <p id="say_info"></p>
+
+    <h2>4. Вывод имени: </h2>
+    <p id="info_user_me"></p>
+
+    <h2>5. Объект студент: </h2>
+    <p id="info_random_student"></p>
+
+
+
+
+
+    <script>
+        
+        let user = {
+            name: "Джон",
+            age: 30
+        };
+        user.sayHi = function () {
+            alert("Привет!");
+        };
+
+        user.sayHi(); // Привет!
+
+
+
+        let buyer = {
+            name: "Джон",
+            age: 30,
+            sex: "мужской",
+            discount: "20%",
+            points: 271,
+        };
+
+        buyer.say_info = function () {
+
+            var info = document.getElementById('say_info');
+            info.innerHTML =
+                "Имя покупателя: " + buyer.name + "<br>" +
+                "Возраст: " + buyer.age + "<br>" +
+                "Пол: " + buyer.sex + "<br>" +
+                "Скидка: " + buyer.discount + "<br>" +
+                "Баллы: " + buyer.points;
+
+        };
+
+        buyer.say_info();
+
+
+
+
+        let order = {
+            drink: "Содовая",
+            food: "Рамен",
+            tips: "Отсутствуют",
+        };
+
+        let restik = {
+            name: "Ra'men",
+            cuisine: "Japanese",
+        };
+
+
+
+        function User(name, group) {
+            this.name = name;
+            this.group = group;
+
+        }
+
+
+        let user_me = new User("Анохина Дарья Андреевна", "ПИ21-1в");
+        user_me.info_user_me = function () {
+            var info_user_me = document.getElementById('info_user_me');
+            info_user_me.innerHTML = "ФИО: " + user_me.name + "<br>" + " Группа: " + user_me.group;
+        }
+        user_me.info_user_me();
+
+
+        function Student(name, group, course) {
+            this.name = name;
+            this.group = group;
+            this.course = course;
+
+        }
+
+      
+        let student1 = new Student("Какое-то имя", "какая-то группа", 0);
+        student1.info_random_student = function () {
+            var info_random_student = document.getElementById('info_random_student');
+            info_random_student.innerHTML = "ФИО: " + student1.name + "<br>" + " Группа: " + student1.group + "<br>" + " Курс: " + student1.course;
+        }
+        student1.info_random_student();
+
+
+
+    </script>
+</body>
+</html>
