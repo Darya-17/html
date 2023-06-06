@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>лаб7</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Возраст</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const url = 'https://644803a87bb84f5a3e4ffafb.mockapi.io/labbbb';
+
+        // ф высшего порядка для фильтра
+        function filterData(callback) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const filteredData = data.filter(callback);
+                    displayData(filteredData);
+                });
+        }
+
+        // ф для табл
+        function displayData(data) {
+            const tableBody = document.querySelector('#table tbody');
+
+            while (tableBody.firstChild) {
+                tableBody.removeChild(tableBody.firstChild);
+            }
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+
+                const idCell = document.createElement('td');
+                idCell.textContent = item.id;
+                row.appendChild(idCell);
+
+                const nameCell = document.createElement('td');
+                nameCell.textContent = item.name;
+                row.appendChild(nameCell);
+                
+
+                const ageCell = document.createElement('td');
+                ageCell.textContent = item.age;
+                row.appendChild(ageCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // ф высшего порядка
+        filterData(item => item.age > 18);
+    </script>
+</body>
+</html>
