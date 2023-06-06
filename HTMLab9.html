@@ -1,0 +1,146 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>...</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #F2F2F2;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            color: #66de6a;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: inline-block;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            margin: auto;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #CCCCCC;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            width: 100%;
+        }
+
+        input[type="reset"], input[type="button"] {
+            background-color: #66de6a;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+            input[type="reset"]:hover, input[type="button"]:hover {
+                background-color: #3E8E41;
+            }
+    </style>
+
+</head>
+<body>
+    <h1>Регистрация</h1>
+    <form name="Sel3">
+        <table>
+            <tr>
+                <td><b>Имя:</b></td>
+                <td>
+                    <input name="Id" size="20"
+                           onBlur="this.value=this.value.toUpperCase()">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Пароль:</b></td>
+                <td>
+                    <input type="password" name="Pwd" size="20"
+                           onFocus="this.select();">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Проверка пароля:</b></td>
+                <td>
+                    <input type="password" name="Pwd1" size="20"
+                           onFocus="this.select();">
+                </td>
+            </tr>
+            <tr>
+                <td><b>Почта:</b></td>
+                <td>
+                    <input name="Email" size="20"
+                           onBlur="validateEmail(this);">
+                </td>
+            </tr>
+        </table>
+        <input type="button" value="Готово" onClick="complete();">
+        <input type="reset" value="Сброс">
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        const validateEmail = input => {
+            const email = input.value;
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                input.setCustomValidity('Введите корректный email');
+            } else {
+                input.setCustomValidity('');
+            }
+        }
+
+        const complete = () => {
+            const messageDiv = $('#message');
+            const email = document.querySelector('input[name="Email"]').value;
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                messageDiv.html(`
+              <div class="alert alert-danger" role="alert">
+                <strong>Ошибка!</strong> Введите корректный email.
+              </div>
+            `);
+                return;
+            }
+            if (document.querySelector('input[name="Pwd"]').value === document.querySelector('input[name="Pwd1"]').value) {
+                const id = document.querySelector('input[name="Id"]').value;
+                const password = document.querySelector('input[name="Pwd"]').value;
+                messageDiv.html(`
+              <div class="alert alert-success" role="alert">
+                <strong>Успешно зарегистрировано!</strong> ID=${id} Password=${password} Email=${email}
+              </div>
+            `);
+            } else {
+                messageDiv.html(`
+              <div class="alert alert-danger" role="alert">
+                <strong>Ошибка!</strong> Пароли не совпадают.
+              </div>
+            `);
+            }
+        }
+    </script>
+
+</body>
+</html>
