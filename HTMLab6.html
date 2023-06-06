@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор</title>
+    <meta charset="utf-8">
+    <script>
+  const add = (a, b) => a + b;
+  const subtract = (a, b) => a - b;
+  const multiply = (a, b) => a * b;
+  const divide = (a, b) => a / b;
+
+  // функция для сложения всех элементов массива
+  function sumArray() {
+   const inputString = document.getElementById('arrayInput').value;
+   const inputArray = inputString.trim().split(',');
+   const numberArray = inputArray.map(Number);
+   const arraySum = numberArray.reduce((a,b) => a + b, 0);
+   document.getElementById('arraySum').innerText = arraySum;
+  }
+
+  // функция для умножения каждого элемента массива на число
+  function multiplyArray() {
+   const inputString = document.getElementById('arrayInput').value;
+   const inputArray = inputString.trim().split(',');
+   const numberArray = inputArray.map(Number);
+   const multiplier = Number(document.getElementById('multiplier').value);
+   const multipliedArray = numberArray.map(element => element * multiplier);
+   document.getElementById('multipliedArray').innerText = multipliedArray.toString();
+  }
+
+  function calculate() {
+   const num1 = Number(document.getElementById('num1').value);
+   const num2 = Number(document.getElementById('num2').value);
+   const operator = document.getElementById('operator').value;
+
+   if (isNaN(num1) || isNaN(num2)) {
+    alert('Неправильный ввод. Пожалуйста, введите числа.');
+    return false;
+   }
+
+   let result = 0;
+   switch (operator) {
+    case '+':
+     result = add(num1, num2);
+     break;
+    case '-':
+     result = subtract(num1, num2);
+     break;
+    case '*':
+     result = multiply(num1, num2);
+     break;
+    case '/':
+     result = divide(num1, num2);
+     break;
+    default:
+     alert('Неправильный оператор');
+     break;
+   }
+
+   document.getElementById('result').innerText = result;
+  }
+
+  function calculateAverage() {
+    const inputString = document.getElementById('arrayInput').value;
+    const inputArray = inputString.trim().split(',');
+    const numberArray = inputArray.map(Number);
+    const arraySum = numberArray.reduce((a,b) => a + b, 0);
+    const average = arraySum / numberArray.length;
+    document.getElementById('average').innerText = average;
+  }
+    </script>
+</head>
+<body>
+    <label for="num1">Число 1:</label>
+    <input type="text" id="num1"><br>
+
+    <label for="operator">Оператор:</label>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select><br>
+
+    <label for="num2">Число 2:</label>
+    <input type="text" id="num2"><br>
+
+    <button onclick="calculate()">Вычислить</button>
+
+    <p>Результат: <span id="result"></span></p>
+
+    <label for="arrayInput">Введите массив чисел через запятую:</label>
+    <input type="text" id="arrayInput"><br>
+
+    <button onclick="calculateAverage()">Вычислить среднее значение</button>
+
+    <p>Среднее значение: <span id="average"></span></p>
+
+    <button onclick="sumArray()">Сложить все элементы массива</button>
+
+    <p>Сумма элементов массива: <span id="arraySum"></span></p>
+
+    <label for="multiplier">Введите множитель для умножения:</label>
+    <input type="text" id="multiplier"><br>
+
+    <button onclick="multiplyArray()">Умножить каждый элемент массива на множитель</button>
+
+    <p>Массив со значением умножения: <span id="multipliedArray"></span></p>
+</body>
+</html>
