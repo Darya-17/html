@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react?dev",
+        "react-dom/client": "https://esm.sh/react-dom/client?dev"
+      }
+    }
+</script>
+<script type="text/babel" data-type="module">
+        import React, { StrictMode } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+
+function Nav() {
+  return (
+     <div class="container">
+        <header class="d-flex flex-wrap justify-content-left py-3 mb-4 border-bottom">
+            <ul class="nav">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">О сайте</a></li>
+			 </ul>
+        </header>
+    </div>
+  );
+}
+
+
+        function ProfileOne() {
+          return (
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFAmVymLC0JJ2qVGF8vxtbOTRaqKRf7WAMZw&usqp=CAU"
+            />
+          );
+        }
+
+        function ProfileTwo() {
+          return (
+            <img
+              src="https://ae04.alicdn.com/kf/Sb6babfa147f94302a5f6741b03c81657w.jpg_640x640.jpg"
+            />
+          );
+        }
+
+        function ProfileThree() {
+          return (
+            <img
+              src="https://florida55.ru/wa-data/public/shop/products/76/08/876/images/2756/2756.970.jpg"
+            />
+          );
+        }
+
+        function MyButton() {
+      return (
+        <button>
+          Красивый
+        </button>
+      );
+    }
+	
+	
+
+        let App = function Gallery() {
+          return (
+            <section>
+              <h1>Flowers</h1>
+                <div className="flex-container">
+
+                <div className="item1"><ProfileOne /><h3>Цветочек</h3><p>Какой-то текст</p><MyButton /></div>
+                <div className="item2"><ProfileTwo /><h3>Ещё цветочек</h3><p>Какой-то текст</p><MyButton /></div>
+                <div className="item3"><ProfileThree /><h3>Тоже цветочек</h3><p>Какой-то текст</p><MyButton /></div>
+
+                </div>
+            </section>
+
+          );
+        }
+
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(
+          <StrictMode>
+          <Nav />
+            <App />
+          </StrictMode>
+        );
+</script>
+
+<style>
+    .flex-container {
+        display: flex;
+        background-color: black;
+        height: 100%;
+        padding: 15px;
+        gap: 5px;
+    }
+
+        .flex-container > div {
+            background: #FFFFFF;
+            border: 3px solid #FFFFFF;
+            border-radius: 5px;
+            padding: 20px;
+        }
+</style>
+
+<div className="flex-container">
+
+    <div className="item1"><Profile /></div>
+    <div className="item2"><Profile /></div>
+    <div className="item3"><Profile /></div>
+
+</div>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: sans-serif;
+        margin: 20px;
+        padding: 0;
+    }
+
+    h1 {
+        margin-top: 0;
+		margin-left: 50px; 
+        font-size: 42px;
+		text-decoration-line: underline;
+	
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    h3 {
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+    h4 {
+        margin-top: 0;
+        font-size: 16px;
+    }
+
+    h5 {
+        margin-top: 0;
+        font-size: 14px;
+    }
+
+    h6 {
+        margin-top: 0;
+        font-size: 12px;
+    }
+
+    code {
+        font-size: 1.2em;
+    }
+
+     ul.nav{
+                margin-left: 0px;
+                padding-left: 0px;
+                list-style: none;
+
+            }
+            ul.nav a {
+                display: inline;
+                width: 7em;
+                padding:10px;
+                
+                text-decoration: none;
+                color: #333;
+            }
+            
+
+    img {
+        margin: 0 10px 10px 0;
+        height: 300px;
+    }
+
+    button {
+        text-align: center;
+        background-color: black;
+        color: white;
+    }
+</style>
+</html>

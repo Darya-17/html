@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react?dev",
+        "react-dom/client": "https://esm.sh/react-dom/client?dev"
+      }
+    }
+</script>
+<script type="text/babel" data-type="module">
+        import React, { StrictMode } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+
+const people = [{
+
+  id: 0, // Used in JSX as a key
+  name: 'Creola Katherine Johnson',
+  profession: 'mathematician',
+  accomplishment: 'spaceflight calculations',
+  imageId: 'MK3eW3A',
+  year: '2000'
+}, {
+  id: 1, // Used in JSX as a key
+  name: 'Mario José Molina-Pasquel Henríquez',
+  profession: 'chemist',
+  accomplishment: 'discovery of Arctic ozone hole',
+  imageId: 'mynHUSa',
+  year: '2000'
+}, {
+  id: 2, // Used in JSX as a key
+  name: 'Mohammad Abdus Salam',
+  profession: 'physicist',
+  accomplishment: 'electromagnetism theory',
+  imageId: 'bE7W1ji',
+  year: '2001'
+}, {
+  id: 3, // Used in JSX as a key
+  name: 'Percy Lavon Julian',
+  profession: 'chemist',
+  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+  imageId: 'IOjWm71',
+  year: '2000'
+}, {
+  id: 4, // Used in JSX as a key
+  name: 'Subrahmanyan Chandrasekhar',
+  profession: 'astrophysicist',
+  accomplishment: 'white dwarf star mass calculations',
+  imageId: 'lrWQx8l',
+  year: '2001'
+}];
+
+
+let App1 = function List() {
+
+  const listItems = people.map(person =>
+    <li key={person.id}>
+      <img
+        src={getImageUrl(person)}
+        alt={person.name}
+      />
+     
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
+        known for {person.accomplishment + ' '} 
+		in {person.year}
+      
+    </li>
+  );
+  return <ul><h3>Весь список</h3>
+{listItems}</ul>;
+}
+
+
+
+let App2 = function List() {
+  const nochemists = people.filter(person =>
+    person.year === '2001'
+  );
+  const listItems = nochemists.map(person =>
+    <li key={person.id}>
+      <img
+        src={getImageUrl(person)}
+        alt={person.name}
+      />
+      <p>
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
+        known for {person.accomplishment + ' '} 
+		in {person.year}
+      </p>
+    </li>
+  );
+  return <ul><h3>Фильтрация</h3>
+{listItems}</ul>;
+}
+
+
+function getImageUrl(person) {
+  return (
+    'https://i.imgur.com/' +
+    person.imageId +
+    's.jpg'
+  );
+}
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <StrictMode>
+    <App1 />
+	<App2 />
+  </StrictMode>
+);
+</script>
+
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: sans-serif;
+        margin: 20px;
+        padding: 0;
+    }
+
+    h1 {
+        margin-top: 0;
+		margin-left: 50px; 
+        font-size: 42px;
+		text-decoration-line: underline;
+	
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+	   h3 {
+	  display: table;
+	  width: auto;
+	  margin: 15px auto;
+	  letter-spacing: 2px;
+	}
+	  h3:before {
+	  content: "";
+	  position: absolute;
+	  top: 50%;
+	  margin-top: -8px;
+	  left: -35px;
+	  width: 10px;
+	  height: 10px;
+	  border: 3px solid #fed57b;
+	  transform: rotate(45deg)
+	}
+	  h3:after {
+	  content: "";
+	  position: absolute;
+	  top: 50%;
+	  margin-top: -8px;
+	  right: -35px;
+	  width: 10px;
+	  height: 10px;
+	  border: 3px solid #fed57b;
+	  transform: rotate(45deg)
+	}
+
+    h4 {
+        margin-top: 0;
+        font-size: 16px;
+    }
+
+    h5 {
+        margin-top: 0;
+        font-size: 14px;
+    }
+
+    h6 {
+        margin-top: 0;
+        font-size: 12px;
+    }
+	
+    code {
+        font-size: 1.2em;
+    }
+	
+	ul {
+	  padding-left: 2rem;
+	  list-style-type: none;
+	}
+
+	ul li {
+	  padding-left: 2rem;
+	  background-image: url(star.svg);
+	  background-position: 0 0;
+	  background-size: 1.6rem 1.6rem;
+	  background-repeat: no-repeat;
+	}
+
+</style>
+</html>
